@@ -28,13 +28,18 @@ export default function App() {
   }
 
   function rollDice() {
-    setDiceInfo((prevDice) =>
-      prevDice.map((dice) => {
-        return dice.isHeld
-          ? dice
-          : { ...dice, value: Math.ceil(Math.random() * 6), id: nanoid() };
-      })
-    );
+    if (tenzies) {
+      setDiceInfo(allNewDice());
+      setTenzies(false);
+    } else {
+      setDiceInfo((prevDice) =>
+        prevDice.map((dice) => {
+          return dice.isHeld
+            ? dice
+            : { ...dice, value: Math.ceil(Math.random() * 6), id: nanoid() };
+        })
+      );
+    }
   }
 
   function holdDice(id) {
