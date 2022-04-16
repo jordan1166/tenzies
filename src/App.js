@@ -3,28 +3,28 @@ import Die from "./Die";
 import { nanoid } from "nanoid";
 
 export default function App() {
-  const [diceNumbers, setDiceNumbers] = useState(allNewDice());
+  const [diceInfo, setDiceInfo] = useState(allNewDice());
 
   function allNewDice() {
-    const randomNumbersArray = Array(10)
+    const diceInfoArray = Array(10)
       .fill()
       .map(() => ({
         value: Math.ceil(Math.random() * 6),
         isHeld: false,
         id: nanoid(),
       }));
-    return randomNumbersArray;
+    return diceInfoArray;
   }
 
   function rollDice() {
-    setDiceNumbers(allNewDice());
+    setDiceInfo(allNewDice());
   }
 
   return (
     <main>
       <div className="dice-container">
-        {diceNumbers.map((number) => (
-          <Die key={number.id} value={number.value} />
+        {diceInfo.map((dice) => (
+          <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} />
         ))}
       </div>
       <button className="roll-button" onClick={rollDice}>
