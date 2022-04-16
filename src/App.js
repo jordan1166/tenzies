@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
 
 export default function App() {
   const [diceInfo, setDiceInfo] = useState(allNewDice());
+  const [tenzies, setTenzies] = useState(false);
+
+  useEffect(() => {
+    const allHeld = diceInfo.every((dice) => dice.isHeld);
+    const firstValue = diceInfo[0].value;
+    const allSameValue = diceInfo.every((dice) => dice.value === firstValue);
+    if (allHeld && allSameValue) {
+      setTenzies(true);
+      console.log("You won!");
+    }
+  }, [diceInfo]);
 
   function allNewDice() {
     const diceInfoArray = Array(10)
@@ -52,7 +63,7 @@ export default function App() {
         ))}
       </div>
       <button className="roll-button" onClick={rollDice}>
-        Roll
+        {tenzies ? "New Game" : "Roll"}
       </button>
     </main>
   );
