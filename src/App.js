@@ -17,7 +17,13 @@ export default function App() {
   }
 
   function rollDice() {
-    setDiceInfo(allNewDice());
+    setDiceInfo((prevDice) =>
+      prevDice.map((dice) => {
+        return dice.isHeld
+          ? dice
+          : { ...dice, value: Math.ceil(Math.random() * 6), id: nanoid() };
+      })
+    );
   }
 
   function holdDice(id) {
