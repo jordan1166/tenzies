@@ -20,11 +20,24 @@ export default function App() {
     setDiceInfo(allNewDice());
   }
 
+  function holdDice(id) {
+    setDiceInfo((prevDice) =>
+      prevDice.map((dice) => {
+        return dice.id === id ? { ...dice, isHeld: !dice.isHeld } : dice;
+      })
+    );
+  }
+
   return (
     <main>
       <div className="dice-container">
         {diceInfo.map((dice) => (
-          <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} />
+          <Die
+            key={dice.id}
+            value={dice.value}
+            isHeld={dice.isHeld}
+            holdDice={() => holdDice(dice.id)}
+          />
         ))}
       </div>
       <button className="roll-button" onClick={rollDice}>
