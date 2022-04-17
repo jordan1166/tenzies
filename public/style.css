@@ -8,6 +8,10 @@ body {
   background-color: #0b2434;
   padding: 1.25em;
   font-family: Karla, sans-serif;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .instructions {
@@ -26,7 +30,7 @@ main {
   border-radius: 0.4em;
   max-width: 50em;
   height: 30em;
-  margin: auto;
+  margin-top: 2em;
 }
 
 .die {
@@ -53,6 +57,7 @@ main {
 
 .roll-button {
   margin-top: 1.75em;
+  margin-bottom: 1em;
   width: 9.76em;
   height: 3.24em;
   font-size: 1.2rem;
@@ -65,4 +70,15 @@ main {
 
 .roll-button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 485px) {
+  .dice-container {
+    grid-template: repeat(5, 1fr) / repeat(2, 1fr);
+  }
+
+  main {
+    height: 100%;
+    margin-top: 0;
+  }
 }
