@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/tenzies/static/js/main.892bedf4.js",
+    "index.html": "/tenzies/index.html",
+    "main.892bedf4.js.map": "/tenzies/static/js/main.892bedf4.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.892bedf4.js"
+  ]
+}
